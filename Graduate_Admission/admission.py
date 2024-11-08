@@ -5,8 +5,8 @@ import streamlit as st
 import random
 import time
 
-    # Add custom background, title, button, and animation styling
-    st.markdown(
+# Add custom background, title, button, and animation styling
+st.markdown(
         """
         <style>
         .stApp {
@@ -93,8 +93,8 @@ import time
         """, unsafe_allow_html=True
     )
 
-    # Title with Animation
-    st.markdown("""
+# Title with Animation
+st.markdown("""
         <div class="title-container">
             <h2>
                 🎓🏫 Graduate Admission Chances Prediction
@@ -102,10 +102,10 @@ import time
         </div>
     """, unsafe_allow_html=True)
 
-    # Button for interaction (using Streamlit button)
-    st.write("")
-    st.write("")
-    if st.button('Get Started'):
+# Button for interaction (using Streamlit button)
+st.write("")
+st.write("")
+if st.button('Get Started'):
         st.write("Let's get started with the prediction!")
         # Create random falling emoji from different positions
         for i in range(10):  # Loop for 10 falling emojis
@@ -123,12 +123,12 @@ import time
            time.sleep(0.5)  # Adjust the delay between each falling emoji
 
 
-    model = joblib.load('admission_model')
-    p1 = st.number_input("Enter GRE Score")
-    p2 = st.number_input("Enter TOEFL Score")
+model = joblib.load('admission_model')
+p1 = st.number_input("Enter GRE Score")
+p2 = st.number_input("Enter TOEFL Score")
 
-    # Add custom CSS styling for a small width box with a bouncing and color-changing effect
-    st.markdown(
+# Add custom CSS styling for a small width box with a bouncing and color-changing effect
+st.markdown(
         """
         <style>
         @keyframes bounce {
@@ -162,20 +162,20 @@ import time
     )
 
     # Slider for University Rating
-    p3 = st.slider('Select University Rating🏫⭐', 1, 5)
+p3 = st.slider('Select University Rating🏫⭐', 1, 5)
 
     # Display selected value inside a small, bouncing box with changing colors
-    st.markdown(f'<div class="bounce-box">You selected: {p3}</div>', unsafe_allow_html=True)
+st.markdown(f'<div class="bounce-box">You selected: {p3}</div>', unsafe_allow_html=True)
 
 
     # Using the select_slider
-    p4 = st.number_input('Enter SOP')
-    p5 = st.number_input('Enter LOR')
-    p6 = st.number_input('Enter CGPA')
-    p7 = st.selectbox('Select Research',(0,1))
+p4 = st.number_input('Enter SOP')
+p5 = st.number_input('Enter LOR')
+p6 = st.number_input('Enter CGPA')
+p7 = st.selectbox('Select Research',(0,1))
 
     # Display a summary of inputs
-    input_data = pd.DataFrame({
+input_data = pd.DataFrame({
         'GRE Score': [p1],
         'TOEFL Score': [p2],
         'University Rating': [p3],
@@ -186,10 +186,10 @@ import time
     })
 
     # Generate HTML for table with styling
-    table_html = input_data.to_html(index=False, classes='styled-table')
+table_html = input_data.to_html(index=False, classes='styled-table')
 
     # CSS to style the black box and table
-    st.markdown(
+st.markdown(
         """
         <style>
         .black-box {
@@ -224,12 +224,12 @@ import time
     )
 
     # Display table inside black box
-    st.markdown("### Customer Data Summary", unsafe_allow_html=True)
-    st.markdown(table_html, unsafe_allow_html=True)
-    st.markdown('</div>', unsafe_allow_html=True)
+st.markdown("### Customer Data Summary", unsafe_allow_html=True)
+st.markdown(table_html, unsafe_allow_html=True)
+st.markdown('</div>', unsafe_allow_html=True)
 
 
-    if st.button('Predict'):
+if st.button('Predict'):
         pred = model.predict(
             [[p1, p2, p3, p4, p5, p6, p7]])
 
@@ -274,7 +274,8 @@ import time
     # st.write("")
     # st.markdown(html_temp, unsafe_allow_html=True)
 
-    html_temp = """
+
+html_temp = """
                <div style="
                    animation: borderGlow 2s infinite alternate;
                    padding: 20px;
@@ -305,6 +306,7 @@ import time
                    }
                </style>
            """
-    st.write("")
-    st.markdown(html_temp, unsafe_allow_html=True)
+st.write("")
+st.markdown(html_temp, unsafe_allow_html=True)
+
 
