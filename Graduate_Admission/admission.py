@@ -5,7 +5,6 @@ import streamlit as st
 import random
 import time
 
-def main():
     # Add custom background, title, button, and animation styling
     st.markdown(
         """
@@ -309,6 +308,3 @@ def main():
     st.write("")
     st.markdown(html_temp, unsafe_allow_html=True)
 
-
-if __name__ == '__main__':
-    main()
